@@ -1,6 +1,6 @@
 import React, {component} from 'react';
 
-import List form './List';
+import List from './List';
 
 class KabanBoard extends from Component 
 {
