@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import Card from './Card';
 
-class List extends from Component
+class List extends Component
 {
     render() {
         var cards = this.props.cards.map(
