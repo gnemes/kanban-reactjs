@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import List from './List';
 
-class KabanBoard extends Component 
+class KanbanBoard extends Component 
 {
     render() {
         return (
