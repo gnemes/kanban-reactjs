@@ -9,9 +9,10 @@ class Card extends Component
         this.state = {
             showDetails: false
         };
-        toggleDetails() {
-            this.setState({showDetails: !this.state.showDetails});
-        }
+    }
+    
+    toggleDetails() {
+        this.setState({showDetails: !this.state.showDetails});
     }
     
     render() {
