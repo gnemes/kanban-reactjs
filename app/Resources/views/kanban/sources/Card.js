@@ -14,7 +14,7 @@ class Card extends Component
     render() {
         let cardDetails;
         if (this.state.showDetails) {
-            cardDetails = ()
+            cardDetails = (
                 <div className="card_details">
                     {this.props.description}
                     <CheckList cardId={this.props.id} tasks={this.props.tasks}/>
