@@ -72,6 +72,7 @@ ul {
     display: inline-block;
     width: 1em;
     content: "\2192 \0020";
+    cursor: pointer;
 }
 
 .card_title-is-open:before {
