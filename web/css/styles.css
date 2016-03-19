@@ -71,11 +71,11 @@ ul {
 .card_title:before {
     display: inline-block;
     width: 1em;
-    content: "\2192 \0020";
+    content: "▸";
 }
 
 .card_title-is-open:before {
-    content: "\2193 \0020"
+    content: "▾";
 }
 
 .checklist_task:first-child {
