@@ -34,7 +34,7 @@ class Card extends Component
             bottom: 0,
             left: 0,
             width: 7,
-            backgroundColor: '#BD8D31'
+            backgroundColor: this.props.color
         }
         return (
             <div className="card">
