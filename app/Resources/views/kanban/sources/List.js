@@ -21,6 +21,11 @@ class List extends Component
                 {cards}
             </div>
         );
+    };
+
+    List.propTypes = {
+        title: PropTypes.string.isRequired,
+        cards: PropTypes.arrayOf(PropTypes.object)
     }
 }
 

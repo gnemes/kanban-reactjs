@@ -17,6 +17,11 @@ class CheckList extends Component
                 <input type="text" className="checklist--add-task" placeholder="Type and hit enter to add a new task"/>
             </div>
         );
+    };
+
+    CheckList.propTypes = {
+        cardId: PropTypes.number,
+        tasks: PropTypes.arrayOf(PropTypes.object)
     }
 }
 
