@@ -8,12 +8,13 @@ class CheckList extends Component
                 <input type="checkbox" defaultChecked={task.done}/>
                 {task.name}
                 <a href="#" className="checklist_task-remove"/>
-            </li>    
+            </li>
         ));
 
         return (
             <div className="checklist">
                 <ul>{tasks}</ul>
+                <input type="text" className="checklist--add-task" placeholder="Type and hit enter to add a new task"/>
             </div>
         );
     }
