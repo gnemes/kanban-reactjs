@@ -22,11 +22,11 @@ class List extends Component
             </div>
         );
     };
+}
 
-    List.propTypes = {
-        title: PropTypes.string.isRequired,
-        cards: PropTypes.arrayOf(PropTypes.object)
-    }
+List.propTypes = {
+    title: PropTypes.string.isRequired,
+    cards: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default List;

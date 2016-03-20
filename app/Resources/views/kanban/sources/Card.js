@@ -55,14 +55,14 @@ class Card extends Component
             </div>
         );
     };
+};
 
-    Card.propTypes = {
-        id: PropTypes.number,
-        title: PropTypes.titlePropType,
-        description: PropTypes.string,
-        color: PropTypes.string,
-        tasks: PropTypes.arrayOf(PropTypes.object)
-    }
+Card.propTypes = {
+    id: PropTypes.number,
+    title: PropTypes.titlePropType,
+    description: PropTypes.string,
+    color: PropTypes.string,
+    tasks: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default Card;
