@@ -9,7 +9,8 @@ const API_URL = 'http://127.0.0.1/kanban-reactjs/app_dev.php/cards/';
 const API_HEADERS = {
 	'content-type': 'application/json',
 	'authorization': 'gnemes@gmail.com',
-	'credentials': 'include'
+	'credentials': 'include',
+	'Access-Control-Allow-Origin': '<origin> | *'
 }
 
 class KanbanBoardContainer extends Component
