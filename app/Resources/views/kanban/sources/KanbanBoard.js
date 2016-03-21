@@ -23,6 +23,6 @@ class KanbanBoard extends Component
 
 KanbanBoard.propTypes = {
     Cards: PropTypes.arrayOf(PropTypes.object)
-}
+};
 
 export default KanbanBoard;

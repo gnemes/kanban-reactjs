@@ -63,6 +63,6 @@ Card.propTypes = {
     description: PropTypes.string,
     color: PropTypes.string,
     tasks: PropTypes.arrayOf(PropTypes.object)
-}
+};
 
 export default Card;
