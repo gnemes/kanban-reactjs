@@ -4,13 +4,11 @@ import KanbanBoard from './KanbanBoard';
 
 import 'whatwg-fetch';
 
-const API_URL = 'http://127.0.0.1/kanban-reactjs/app_dev.php/cards/';
+const API_URL = 'http://192.168.0.21/kanban-reactjs/app_dev.php/cards/';
 
 const API_HEADERS = {
 	'content-type': 'application/json',
-	'authorization': 'gnemes@gmail.com',
-	'credentials': 'include',
-	'Access-Control-Allow-Origin': '<origin> | *'
+	'authorization': 'gnemes@gmail.com'
 }
 
 class KanbanBoardContainer extends Component
