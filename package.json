@@ -19,6 +19,7 @@
     "dependencies": {
         "react": "~0.14.*",
         "react-dom": "~0.14.*",
-        "marked": "~0.3.*"
+        "marked": "~0.3.*",
+        "whatwg-fetch": "*"
     }
 }
