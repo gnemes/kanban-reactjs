@@ -74,6 +74,8 @@ class DefaultController extends Controller
 
             array_push($result, $card);
         }
+
+        return $result;
     }
 
     private function _getColumn()
