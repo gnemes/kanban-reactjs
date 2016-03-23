@@ -14,11 +14,11 @@ class CheckList extends Component
             <li key={task.id} className="checklist_task">
                 <input type="checkbox"
                        defaultChecked={task.done}
-                       onChange={this.props.tasksCallbacks.toggle.bind(null, this.props.cardId, this.props.taskId, taskIndex)}/>
+                       onChange={this.props.tasksCallbacks.toggle.bind(null, this.props.cardId, task.id, taskIndex)}/>
                 {task.name}
                 <a href="#"
                    className="checklist_task-remove"
-                   onClick={this.props.tasksCallbacks.delete.bind(null, this.props.cardId, this.props.taskId, taskIndex)}/>
+                   onClick={this.props.tasksCallbacks.delete.bind(null, this.props.cardId, task.id, taskIndex)}/>
             </li>
         ));
 
