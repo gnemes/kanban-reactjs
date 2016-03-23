@@ -25,58 +25,55 @@ class DefaultController extends Controller
      */
     public function cardsAction(Request $request)
     {
-        $result = array();
-
-        $card = array(
-            "id" => 1,
-            "title" => "Read a book",
-            "description" => "I should read the **whole** book",
-            "status" => $this->_getColumn(),
-            "color" => "#BD8D31",
-            "tasks" => array()
-        );
-
-        array_push($result, $card);
-
-        $card = array(
-            "id" => 2,
-            "title" => "Write some code",
-            "description" => "Code along with the samples in this book. The complete source can be found at [github](https://github.com/pro-react)",
-            "status" => $this->_getColumn(),
-            "color" => "#3A7E28",
-            "tasks" => array()
-        );
-
-        $task = array(
-            "id" => 1,
-            "name" => "Contact list example",
-            "done" => true
-        );
-
-        array_push($card["tasks"], $task);
-
-        $task = array(
-            "id" => 2,
-            "name" => "Kanban example",
-            "done" => false
-        );
-
-        array_push($card["tasks"], $task);
-
-        $task = array(
-            "id" => 3,
-            "name" => "My own experiments",
-            "done" => false
-        );
-
-        array_push($card["tasks"], $task);
-
-        array_push($result, $card);
+        $result = $this->_getDummyCards();
 
         $response = new JsonResponse();
         $response->setData($result);
 
         return $response;
+    }
+
+    private function _getDummyCards()
+    {
+        $result = array();
+        $cardsQty = rand(10, 30);
+        $taskId = 0;
+        for ($i = 0; $i < $cardsQty) {
+            $card = array(
+                "id" => $i,
+                "title" => "Write some code",
+                "description" => "Code along with the samples in this book. The complete source can be found at [github](https://github.com/pro-react)",
+                "status" => $this->_getColumn(),
+                "color" => "#3A7E28",
+                "tasks" => array()
+            );
+
+            $task = array(
+                "id" => ++$taskId,
+                "name" => "Contact list example",
+                "done" => true
+            );
+
+            array_push($card["tasks"], $task);
+
+            $task = array(
+                "id" => ++$taskId,
+                "name" => "Kanban example",
+                "done" => false
+            );
+
+            array_push($card["tasks"], $task);
+
+            $task = array(
+                "id" => ++$taskId,
+                "name" => "My own experiments",
+                "done" => false
+            );
+
+            array_push($card["tasks"], $task);
+
+            array_push($result, $card);
+        }
     }
 
     private function _getColumn()
