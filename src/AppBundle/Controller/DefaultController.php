@@ -38,7 +38,7 @@ class DefaultController extends Controller
         $result = array();
         $cardsQty = rand(10, 30);
         $taskId = 0;
-        for ($i = 0; $i < $cardsQty) {
+        for ($i = 0; $i < $cardsQty; $i++) {
             $card = array(
                 "id" => $i,
                 "title" => "Write some code",
