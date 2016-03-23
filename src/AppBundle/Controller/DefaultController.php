@@ -31,7 +31,7 @@ class DefaultController extends Controller
             "id" => 1,
             "title" => "Read a book",
             "description" => "I should read the **whole** book",
-            "status" => "in-progress",
+            "status" => $this->_getColumn(),
             "color" => "#BD8D31",
             "tasks" => array()
         );
@@ -42,7 +42,7 @@ class DefaultController extends Controller
             "id" => 2,
             "title" => "Write some code",
             "description" => "Code along with the samples in this book. The complete source can be found at [github](https://github.com/pro-react)",
-            "status" => "todo",
+            "status" => $this->_getColumn(),
             "color" => "#3A7E28",
             "tasks" => array()
         );
@@ -77,5 +77,12 @@ class DefaultController extends Controller
         $response->setData($result);
 
         return $response;
+    }
+
+    private function _getColumn()
+    {
+        $columns = array("todo", "in-progress", "done");
+        $index = rand(2);
+        return $columns[$index];
     }
 }
