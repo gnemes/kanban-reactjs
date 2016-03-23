@@ -21,7 +21,7 @@ class KanbanBoardContainer extends Component
 	}
 
 	componentDidMount() {
-		fetch(API_URL, {headers: API_HEADERS})
+		fetch(`${API_URL}/cards`, {headers: API_HEADERS})
 			.then((response) => response.json())
 			.then((responseData) => {
 				this.setState({cards: responseData});
@@ -31,8 +31,40 @@ class KanbanBoardContainer extends Component
 			});
 	}
 
+	addTask(cardId, taskName) {
+
+	}
+
+	deleteTask(cardId, taskId, taskIndex) {
+	 	let cardIndex = this.state.cards.findIndex((card) => card.id == cardId);
+
+		let nextState = update(this.state.cards, {
+			[cardIndex]: {
+				tasks: {$splice:[[taskIndex,1]]}
+			}
+		});
+
+		this.setState({cards:nextState});
+
+		fetch(`${API_URL}/cards/${cardId}/tasks/${taskId}`, {
+			method: 'delete',
+			headers: API_HEADERS
+		})
+	}
+
+	toggleTask(cardId, taskId, taskIndex) {
+
+	}
+
 	render() {
-		return <KanbanBoard cards={this.state.cards}/>
+		return <KanbanBoard cards={this.state.cards}
+							tasksCallbacks={
+								{
+									toggle: this.toggleTask.bind(this),
+									delete: this.deleteTask.bind(this),
+									add: this.addTask.bind(this)
+								}
+							}/>
 	}
 }
 

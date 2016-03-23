@@ -20,6 +20,8 @@
         "react": "~0.14.*",
         "react-dom": "~0.14.*",
         "marked": "~0.3.*",
-        "whatwg-fetch": "*"
+        "whatwg-fetch": "*",
+        "react-addons-update": "*",
+        "babel-polyfill": "*"
     }
 }
