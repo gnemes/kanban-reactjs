@@ -81,10 +81,8 @@ class DefaultController extends Controller
 
     private function _getColumn()
     {
-        /*
         $columns = array("todo", "in-progress", "done");
-        $index = rand(2);
-        return $columns[$index];*/
-        return "todo";
+        $index = rand(0, 2);
+        return $columns[$index];
     }
 }
