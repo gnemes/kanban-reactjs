@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 
 import KanbanBoard from './KanbanBoard';
 
+import update from 'react-addons-update';
+
+import 'babel-polyfill';
+
 import 'whatwg-fetch';
 
 const API_URL = 'http://192.168.0.21/kanban-reactjs/app_dev.php';
