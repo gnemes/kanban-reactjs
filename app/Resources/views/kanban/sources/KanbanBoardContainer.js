@@ -36,6 +36,7 @@ class KanbanBoardContainer extends Component
 	}
 
 	addTask(cardId, taskName) {
+/*
 		let cardIndex = this.state.cards.findIndex((card) => card.id == cardId);
 
 		let newTask = {id: Date.now(), name:  taskName, done: false};
@@ -47,7 +48,7 @@ class KanbanBoardContainer extends Component
 		});
 
 		this.setState({cards: newState});
-/*
+
 		fetch(`${API_URL}/cards/${cardId}/tasks`, {
 			method: 'post',
 			headers: API_HEADERS,
