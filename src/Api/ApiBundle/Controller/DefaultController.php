@@ -6,15 +6,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class DefaultController extends Controller
 {
     /**
      * @Route("/API/cards", name="cards")
+     * @Method({"GET"})
      */
     public function cardsAction(Request $request)
     {
         $result = $this->_getDummyCards();
+
+        $response = new JsonResponse();
+        $response->setData($result);
+
+        return $response;
+    }
+
+    /**
+     * @Route("/API/cards/{cardId}/tasks/{taskId}", name="task_delete")
+     * @Method({"DELETE"})
+     */
+    public function taskDeleteAction($cardId, $taskId, Request $request)
+    {
+        $result = array();
 
         $response = new JsonResponse();
         $response->setData($result);
