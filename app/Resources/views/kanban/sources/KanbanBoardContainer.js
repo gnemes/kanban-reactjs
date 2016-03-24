@@ -55,8 +55,8 @@ class KanbanBoardContainer extends Component
 		})
 			.then((response) => response.json())
 			.then((responseData) => {
-				newTask.id = responseData.id;
-				this.setState(newState)
+				//newTask.id = responseData.id;
+				//this.setState(newState)
 			});
 	}
 
