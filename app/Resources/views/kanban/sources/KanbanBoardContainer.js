@@ -47,7 +47,7 @@ class KanbanBoardContainer extends Component
 			}
 		});
 
-		this.setState({cards: newState});
+		this.setState({cards: nextState});
 
 		fetch(`${API_URL}/cards/${cardId}/tasks`, {
 			method: 'post',
@@ -57,7 +57,7 @@ class KanbanBoardContainer extends Component
 			.then((response) => response.json())
 			.then((responseData) => {
 				newTask.id = responseData.id;
-				this.setState(newState)
+				this.setState(nextState)
 			});
 	}
 
