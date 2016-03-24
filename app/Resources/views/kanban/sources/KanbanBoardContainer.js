@@ -47,7 +47,7 @@ class KanbanBoardContainer extends Component
 		});
 
 		this.setState({cards: newState});
-
+/*
 		fetch(`${API_URL}/cards/${cardId}/tasks`, {
 			method: 'post',
 			headers: API_HEADERS,
@@ -58,6 +58,7 @@ class KanbanBoardContainer extends Component
 				//newTask.id = responseData.id;
 				//this.setState(newState)
 			});
+			*/
 	}
 
 	deleteTask(cardId, taskId, taskIndex) {
