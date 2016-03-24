@@ -64,6 +64,8 @@ class KanbanBoardContainer extends Component
 	deleteTask(cardId, taskId, taskIndex) {
 	 	let cardIndex = this.state.cards.findIndex((card) => card.id == cardId);
 
+        let prevState = this.state;
+
 		let nextState = update(this.state.cards, {
 			[cardIndex]: {
 				tasks: {$splice:[[taskIndex,1]]}
@@ -75,7 +77,14 @@ class KanbanBoardContainer extends Component
 		fetch(`${API_URL}/cards/${cardId}/tasks/${taskId}`, {
 			method: 'delete',
 			headers: API_HEADERS
-		})
+		}).then((response) => {
+			if (!response.ok) {
+				throw new Error("Server response wasnt OK");
+			}
+		}).catch((error) => {
+			console.error("Fetch error: ", error);
+			this.setState(prevState);
+		});
 	}
 
 	toggleTask(cardId, taskId, taskIndex) {
