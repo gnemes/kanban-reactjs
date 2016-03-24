@@ -38,6 +38,20 @@ class DefaultController extends Controller
         return $response;
     }
 
+    /**
+     * @Route("/API/cards/{cardId}/tasks", name="task_add")
+     * @Method({"POST"})
+     */
+    public function taskAddAction($cardId, Request $request)
+    {
+        $result = array();
+
+        $response = new JsonResponse();
+        $response->setData($result);
+
+        return $response;
+    }
+
     /****************** PRIVATE METHODS *******************/
 
     private function _getDummyCards()
