@@ -36,11 +36,11 @@ class KanbanBoardContainer extends Component
 	}
 
 	addTask(cardId, taskName) {
-/*
+
 		let cardIndex = this.state.cards.findIndex((card) => card.id == cardId);
 
 		let newTask = {id: Date.now(), name:  taskName, done: false};
-
+/*
 		let nextState = update(this.state.cards, {
 			[cardIndex]: {
 				tasks: {$push:[newTask]}
