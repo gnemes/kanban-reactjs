@@ -57,7 +57,32 @@ class KanbanBoardContainer extends Component
 	}
 
 	toggleTask(cardId, taskId, taskIndex) {
+		let cardIndex = this.state.cards.findIndex((card) => card.id == cardId);
 
+		let newDoneValue;
+
+		let nextState = update(this.state.cards, {
+			[cardIndex]: {
+				tasks: {
+					[taskIndex]: {
+						done: {
+							$apply:(done) => {
+								newDoneValue = !done;
+								return newDoneValue;
+							}
+						}
+					}
+				}
+			}
+		});
+
+		this.setState({cards:nextState});
+
+		fetch(`${API_URL}/cards/${cardId}/tasks/${taskId}`, {
+			method: 'put',
+			headers: API_HEADERS,
+			body: JSON.stringify({done:newDoneValue})
+		})
 	}
 
 	render() {
