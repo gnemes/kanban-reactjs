@@ -52,6 +52,20 @@ class DefaultController extends Controller
         return $response;
     }
 
+    /**
+     * @Route("/API/cards/{cardId}/tasks/{taskId}", name="task_toggle")
+     * @Method({"PUT"})
+     */
+    public function taskToggleAction($cardId, $taskId, Request $request)
+    {
+        $result = array();
+
+        $response = new JsonResponse();
+        $response->setData($result);
+
+        return $response;
+    }
+
     /****************** PRIVATE METHODS *******************/
 
     private function _getDummyCards()
