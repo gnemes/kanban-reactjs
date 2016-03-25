@@ -102,12 +102,21 @@ class DefaultController extends Controller
             $params = json_decode($content, true);
         }
 
+        $em = $this->getDoctrine()->getManager();
+        $card = $em->getRepository('ApiBundle:Cards')->findOneBy(
+            array('id' => $cardId)
+        );
+
+        if (!$card) {
+            throw $this->createNotFoundException(
+                'No card found for id '
+            );
+        }
+
         $task = new Tasks();
         $task->setName($params['name']);
         $task->setDone($params['done']);
-        $task->setCardid($cardId);
-
-        $em = $this->getDoctrine()->getManager();
+        $task->setCardid($card);
 
         $em->persist($task);
 
