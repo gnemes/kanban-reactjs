@@ -49,7 +49,15 @@ class Cards
      */
     private $id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ApiBundle/Entity/Tasks", mappedBy="cardid")
+     */
+    protected $tasks;
 
+    public function __construct()
+    {
+        $this->tasks = new ArrayCollection();
+    }
 
     /**
      * Set title
