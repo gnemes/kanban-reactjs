@@ -9,8 +9,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 // Entities
-use ApiBundle\Entity\Cards;
-use ApiBundle\Entity\Tasks;
+use Api\ApiBundle\Entity\Cards;
+use Api\ApiBundle\Entity\Tasks;
 
 class DefaultController extends Controller
 {
