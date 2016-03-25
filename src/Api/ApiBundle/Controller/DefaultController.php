@@ -28,18 +28,32 @@ class DefaultController extends Controller
         if ($cards) {
             foreach ($cards as $card) {
                 $elem = array();
+                $elem['id'] = $card->getId();
                 $elem['title'] = $card->getTitle();
                 $elem['description'] = $card->getDescription();
                 $elem['color'] = $card->getColor();
                 $elem['status'] = $card->getStatus();
-                $elem['tasks'] = $card->getTasks();
+
+                $elem['tasks'] = array();
+                $tasks = $card->getTasks();
+
+                if ($tasks) {
+                    foreach ($tasks as $task) {
+                        $elemTask = array();
+                        $elemTask['id'] = $task->getId();
+                        $elemTask['name'] = $task->getName();
+                        $elemTask['done'] = $task->getDone();
+                        array_push($elem['tasks'], $elemTask);
+                    }
+                }
+
 
                 array_push($result, $elem);
             }
         }
 
         $logger = $this->get('logger');
-        $logger->info('Cards :: '.var_dump($result));
+        $logger->info('Cards :: '.var_export($result, true));
 
         $response = new JsonResponse();
         $response->setData($result);
