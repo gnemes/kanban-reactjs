@@ -19,6 +19,8 @@ class DefaultController extends Controller
      */
     public function cardsAction(Request $request)
     {
+        $logger = $this->get('logger');
+
         $cards = $this->getDoctrine()
             ->getRepository('ApiBundle:Cards')
             ->findAll();
@@ -51,9 +53,6 @@ class DefaultController extends Controller
                 array_push($result, $elem);
             }
         }
-
-        $logger = $this->get('logger');
-        $logger->info('Cards :: '.var_export($result, true));
 
         $response = new JsonResponse();
         $response->setData($result);
