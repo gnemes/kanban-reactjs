@@ -95,6 +95,22 @@ class DefaultController extends Controller
      */
     public function taskAddAction($cardId, Request $request)
     {
+        $logger = $this->get('logger');
+        $content = $request->getContent();
+        if (!empty($content))
+        {
+            $params = json_decode($content, true);
+        }
+
+        $task = new Task();
+        $task->setName($params['name']);
+        $task->setDone($params['done']);
+        $task->setCardid($cardId);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $em->persist($task);
+
         $result = array();
 
         $response = new JsonResponse();
