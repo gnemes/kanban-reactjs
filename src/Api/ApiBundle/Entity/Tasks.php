@@ -45,8 +45,6 @@ class Tasks
      */
     private $cardid;
 
-
-
     /**
      * Set name
      *
@@ -127,5 +125,15 @@ class Tasks
     public function getCardid()
     {
         return $this->cardid;
+    }
+
+    /**
+     * Get tasks
+     *
+     * @return array
+     */
+    public function getTasks()
+    {
+        return $this->tasks;
     }
 }
