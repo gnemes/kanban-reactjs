@@ -7,6 +7,14 @@ class KanbanBoard extends Component
     render() {
         return (
             <div className="app">
+                <List id="backlog"
+                      title="Backlog"
+                      cards={
+                        this.props.cards.filter((card) => card.status === "backlog")
+                      }
+                      tasksCallbacks={
+                          this.props.tasksCallbacks
+                      }/>
                 <List id="todo"
                       title="To-Do"
                       cards={
@@ -31,6 +39,14 @@ class KanbanBoard extends Component
                       tasksCallbacks={
                           this.props.tasksCallbacks
                       }/>
+                  <List id="approved"
+                        title="Approved"
+                        cards={
+                          this.props.cards.filter((card) => card.status === "approved")
+                        }
+                        tasksCallbacks={
+                            this.props.tasksCallbacks
+                        }/>
             </div>
         )
     };
