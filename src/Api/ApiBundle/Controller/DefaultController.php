@@ -39,7 +39,8 @@ class DefaultController extends Controller
         }
 
         $logger = $this->get('logger');
-        
+        $logger->info('Cards :: '.var_dump($result));
+
         $response = new JsonResponse();
         $response->setData($result);
 
