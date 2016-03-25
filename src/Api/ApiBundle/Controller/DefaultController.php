@@ -115,7 +115,7 @@ class DefaultController extends Controller
         {
             $params = json_decode($content, true);
         }
-$logger->info("DONE PUT :: ".var_export($params, true));
+
         $em = $this->getDoctrine()->getManager();
         $task = $em->getRepository('ApiBundle:Tasks')->findOneBy(
             array('id' => $taskId, 'cardid' => $cardId)
@@ -127,7 +127,7 @@ $logger->info("DONE PUT :: ".var_export($params, true));
             );
         }
 
-        $task->setDone($done);
+        $task->setDone($params['done']);
         $em->flush();
 
         $result = array();
