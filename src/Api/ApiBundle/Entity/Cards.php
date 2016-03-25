@@ -50,7 +50,7 @@ class Cards
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="ApiBundle/Entity/Tasks", mappedBy="cardid")
+     * @ORM\OneToMany(targetEntity="Tasks", mappedBy="cardid")
      */
     protected $tasks;
 
@@ -163,5 +163,39 @@ class Cards
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Add task
+     *
+     * @param \Api\ApiBundle\Entity\Tasks $task
+     *
+     * @return Cards
+     */
+    public function addTask(\Api\ApiBundle\Entity\Tasks $task)
+    {
+        $this->tasks[] = $task;
+
+        return $this;
+    }
+
+    /**
+     * Remove task
+     *
+     * @param \Api\ApiBundle\Entity\Tasks $task
+     */
+    public function removeTask(\Api\ApiBundle\Entity\Tasks $task)
+    {
+        $this->tasks->removeElement($task);
+    }
+
+    /**
+     * Get tasks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTasks()
+    {
+        return $this->tasks;
     }
 }
