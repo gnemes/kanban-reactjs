@@ -21,22 +21,25 @@ class DefaultController extends Controller
     {
         $cards = $this->getDoctrine()
             ->getRepository('ApiBundle:Cards')
-            ->createQueryBuilder('e')
-            ->select('e')
-            ->getQuery()
-            ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
+            ->findAll();
 
-        $cardsQty = count($cards);
-        if ($cardsQty > 0) {
-            for ($i = 0; $i < $cardsQty; $i++) {
-                $cards[$i]['tasks'] = $cards[$i]->getTasks();
+
+        $result = array();
+        if ($cards) {
+            foreach ($cards as $card) {
+                $elem = array();
+                $elem['title'] = $card->getTitle();
+                $elem['description'] = $card->getDescription();
+                $elem['color'] = $card->getColor();
+                $elem['status'] = $card->getStatus();
+                $elem['tasks'] = $card->getTasks();
+
+                array_push($result, $elem);
             }
         }
 
         $logger = $this->get('logger');
-        $logger->info('Cards :: '.var_export($cards, true));
-
-        $result = $cards;
+        $logger->info('Cards :: '.var_export($result, true));
 
         $response = new JsonResponse();
         $response->setData($result);
