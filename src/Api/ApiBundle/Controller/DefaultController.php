@@ -103,7 +103,7 @@ class DefaultController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $card = $em->getRepository('ApiBundle:Cards')->findById($cardId);
+        $card = $em->getRepository('ApiBundle:Cards')->find($cardId);
 
         if (!$card) {
             $logger->error("Card not found");
