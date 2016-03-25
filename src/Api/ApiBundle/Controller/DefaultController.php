@@ -110,7 +110,7 @@ class DefaultController extends Controller
     public function taskToggleAction($cardId, $taskId, Request $request)
     {
         $logger = $this->get('logger');
-        $done = $request->get("done");
+        $done = $request->getData();
 $logger->info("DONE PUT :: ".$done);
         $em = $this->getDoctrine()->getManager();
         $task = $em->getRepository('ApiBundle:Tasks')->findOneBy(
