@@ -1,0 +1,64 @@
+<?php
+
+namespace Api\ApiBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Cards
+ *
+ * @ORM\Table(name="cards", indexes={@ORM\Index(name="fk_cards_tasks_idx", columns={"taskid"})})
+ * @ORM\Entity
+ */
+class Cards
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=45, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", length=30, nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="color", type="string", length=10, nullable=false)
+     */
+    private $color;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \Api\ApiBundle\Entity\Tasks
+     *
+     * @ORM\ManyToOne(targetEntity="Api\ApiBundle\Entity\Tasks")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="taskid", referencedColumnName="id")
+     * })
+     */
+    private $taskid;
+
+
+}
+
