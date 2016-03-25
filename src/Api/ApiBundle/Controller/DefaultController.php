@@ -23,6 +23,9 @@ class DefaultController extends Controller
             ->getRepository('ApiBundle:Cards')
             ->findAll();
 
+        $logger = $this->get('logger');
+        $logger->info('Cards :: '.var_export($cards, true));
+
         $result = $cards;
 
         $response = new JsonResponse();
