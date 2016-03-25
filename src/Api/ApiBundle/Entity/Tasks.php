@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Tasks
  *
- * @ORM\Table(name="tasks")
+ * @ORM\Table(name="tasks", indexes={@ORM\Index(name="fk_tasks_cards_idx", columns={"cardid"})})
  * @ORM\Entity
  */
 class Tasks
@@ -34,6 +34,16 @@ class Tasks
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \Api\ApiBundle\Entity\Cards
+     *
+     * @ORM\ManyToOne(targetEntity="Api\ApiBundle\Entity\Cards")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="cardid", referencedColumnName="id")
+     * })
+     */
+    private $cardid;
 
 
 
@@ -93,5 +103,29 @@ class Tasks
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set cardid
+     *
+     * @param \Api\ApiBundle\Entity\Cards $cardid
+     *
+     * @return Tasks
+     */
+    public function setCardid(\Api\ApiBundle\Entity\Cards $cardid = null)
+    {
+        $this->cardid = $cardid;
+
+        return $this;
+    }
+
+    /**
+     * Get cardid
+     *
+     * @return \Api\ApiBundle\Entity\Cards
+     */
+    public function getCardid()
+    {
+        return $this->cardid;
     }
 }

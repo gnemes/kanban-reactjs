@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Cards
  *
- * @ORM\Table(name="cards", indexes={@ORM\Index(name="fk_cards_tasks_idx", columns={"taskid"})})
+ * @ORM\Table(name="cards")
  * @ORM\Entity
  */
 class Cards
@@ -48,16 +48,6 @@ class Cards
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var \Api\ApiBundle\Entity\Tasks
-     *
-     * @ORM\ManyToOne(targetEntity="Api\ApiBundle\Entity\Tasks")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="taskid", referencedColumnName="id")
-     * })
-     */
-    private $taskid;
 
 
 
@@ -165,29 +155,5 @@ class Cards
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set taskid
-     *
-     * @param \Api\ApiBundle\Entity\Tasks $taskid
-     *
-     * @return Cards
-     */
-    public function setTaskid(\Api\ApiBundle\Entity\Tasks $taskid = null)
-    {
-        $this->taskid = $taskid;
-
-        return $this;
-    }
-
-    /**
-     * Get taskid
-     *
-     * @return \Api\ApiBundle\Entity\Tasks
-     */
-    public function getTaskid()
-    {
-        return $this->taskid;
     }
 }
