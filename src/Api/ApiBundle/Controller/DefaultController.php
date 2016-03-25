@@ -21,7 +21,12 @@ class DefaultController extends Controller
     {
         $cards = $this->getDoctrine()
             ->getRepository('ApiBundle:Cards')
-            ->findAll();
+            ->createQueryBuilder('e')
+            ->select('e')
+            ->getQuery()
+            ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
+
+        $result = $cards;
 
         $logger = $this->get('logger');
         $logger->info('Cards :: '.var_export($cards, true));
