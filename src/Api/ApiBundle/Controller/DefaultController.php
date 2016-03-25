@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
+// Entities
+use ApiBundle\Entity\Cards;
+
 class DefaultController extends Controller
 {
     /**
@@ -16,7 +19,11 @@ class DefaultController extends Controller
      */
     public function cardsAction(Request $request)
     {
-        $result = $this->_getDummyCards();
+        $cards = $this->getDoctrine()
+            ->getRepository('ApiBundle:Cards')
+            ->findAll();
+
+        $result = $cards;
 
         $response = new JsonResponse();
         $response->setData($result);
