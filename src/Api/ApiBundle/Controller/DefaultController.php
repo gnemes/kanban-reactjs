@@ -112,7 +112,7 @@ class DefaultController extends Controller
             );
         }
 
-        $logger->error("Card found!");
+        $logger->error("Card found! ".var_dump($card));
         $task = new Tasks();
         $task->setName($params['name']);
         $task->setDone($params['done']);
