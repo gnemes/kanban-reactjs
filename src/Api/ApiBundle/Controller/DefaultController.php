@@ -103,16 +103,16 @@ class DefaultController extends Controller
         }
 
         $em = $this->getDoctrine()->getManager();
-        $card = $em->getRepository('ApiBundle:Cards')->findOneBy(
-            array('id' => $cardId)
-        );
+        $card = $em->getRepository('ApiBundle:Cards')->findById($cardId);
 
         if (!$card) {
+            $logger->error("Card not found");
             throw $this->createNotFoundException(
                 'No card found for id '
             );
         }
 
+        $logger->error("Card found!");
         $task = new Tasks();
         $task->setName($params['name']);
         $task->setDone($params['done']);
