@@ -26,7 +26,12 @@ class DefaultController extends Controller
             ->getQuery()
             ->getResult(\Doctrine\ORM\Query::HYDRATE_ARRAY);
 
-        $result = $cards;
+        $cardsQty = count($cards);
+        if ($cardsQty > 0) {
+            for ($i = 0; $i < $cardsQty; $i++) {
+                $cards[$i]['tasks'] = $cards[$i]->getTasks();
+            }
+        }
 
         $logger = $this->get('logger');
         $logger->info('Cards :: '.var_export($cards, true));
