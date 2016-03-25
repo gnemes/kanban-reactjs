@@ -109,6 +109,22 @@ class DefaultController extends Controller
      */
     public function taskToggleAction($cardId, $taskId, Request $request)
     {
+        $done = $request->get("done");
+
+        $em = $this->getDoctrine()->getManager();
+        $task = $em->getRepository('ApiBundle:Tasks')->findOneBy(
+            array('id' => $taskId, 'cardid' => $cardId)
+        );
+
+        if (!$task) {
+            throw $this->createNotFoundException(
+                'No task found for id '
+            );
+        }
+
+        $task->setDone($done);
+        $em->flush();
+
         $result = array();
 
         $response = new JsonResponse();
