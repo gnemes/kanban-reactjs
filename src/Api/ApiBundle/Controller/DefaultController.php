@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 // Entities
 use ApiBundle\Entity\Cards;
+use ApiBundle\Entity\Tasks;
 
 class DefaultController extends Controller
 {
@@ -66,6 +67,20 @@ class DefaultController extends Controller
      */
     public function taskDeleteAction($cardId, $taskId, Request $request)
     {
+        $em = $this->getDoctrine()->getManager();
+        $task = $em->getRepository('ApiBundle:Tasks')->findOneBy(
+            array('id' => $taskId, 'cardid' => $cardId)
+        );
+
+        if (!$task) {
+            throw $this->createNotFoundException(
+                'No task found for id '
+            );
+        }
+
+        $em->remove($task);
+        $em->flush();
+
         $result = array();
 
         $response = new JsonResponse();
