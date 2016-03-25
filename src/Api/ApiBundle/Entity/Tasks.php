@@ -38,10 +38,8 @@ class Tasks
     /**
      * @var \Api\ApiBundle\Entity\Cards
      *
-     * @ORM\ManyToOne(targetEntity="Api\ApiBundle\Entity\Cards")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="cardid", referencedColumnName="id")
-     * })
+     * @ORM\ManyToOne(targetEntity="Cards", inversedBy="tasks" )
+     * @ORM\JoinColumn(name="cardid", referencedColumnName="id")
      */
     private $cardid;
 
