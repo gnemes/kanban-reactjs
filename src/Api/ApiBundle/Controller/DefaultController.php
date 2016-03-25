@@ -102,7 +102,7 @@ class DefaultController extends Controller
             $params = json_decode($content, true);
         }
 
-        $task = new Task();
+        $task = new Tasks();
         $task->setName($params['name']);
         $task->setDone($params['done']);
         $task->setCardid($cardId);
