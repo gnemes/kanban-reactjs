@@ -32,7 +32,7 @@ class DefaultController extends Controller
                 $elem['description'] = $card->getDescription();
                 $elem['color'] = $card->getColor();
                 $elem['status'] = $card->getStatus();
-                $elem['tasks'] = $card->getTasks();
+                $elem['tasks'] = array();
 
                 array_push($result, $elem);
             }
