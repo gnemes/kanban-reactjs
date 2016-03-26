@@ -126,6 +126,8 @@ $logger->info("Paso 4");
         $em = $this->getDoctrine()->getManager();
         $logger->info("Paso 5");
         $em->persist($task);
+        $em->flush();
+        
 $logger->info("Paso 6");
         $result = array();
 
