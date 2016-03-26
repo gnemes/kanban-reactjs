@@ -113,9 +113,12 @@ class DefaultController extends Controller
             );
         }
 
+        $logger->info("Card found!");
         $task = new Tasks();
         $task->setName($params['name']);
         $task->setDone($params['done']);
+
+        $card->addTask($task);
         $task->setCardid($card);
 
         $em = $this->getDoctrine()->getManager();
