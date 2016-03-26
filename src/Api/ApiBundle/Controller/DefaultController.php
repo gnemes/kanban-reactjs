@@ -113,22 +113,18 @@ class DefaultController extends Controller
             );
         }
 
-        $logger->info("Card found!");
+
         $task = new Tasks();
-        $logger->info("Paso 1");
         $task->setName($params['name']);
         $task->setDone($params['done']);
-$logger->info("Paso 2");
+
         $card->addTask($task);
-        $logger->info("Paso 3");
         $task->setCardid($card);
-$logger->info("Paso 4");
+
         $em = $this->getDoctrine()->getManager();
-        $logger->info("Paso 5");
         $em->persist($task);
         $em->flush();
         
-$logger->info("Paso 6");
         $result = array();
 
         $response = new JsonResponse();
